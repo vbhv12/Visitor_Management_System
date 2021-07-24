@@ -1,0 +1,56 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+<html>
+    <head>
+        <title>Create Event</title>
+        <style>
+            #event{
+                width:40%;
+                margin: auto;
+                background-color: rgb(95, 95, 99);
+                color: white;
+                border-radius: 18px;
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+        </style>
+    </head>
+    <body style="background-color: darkgray;">
+        <br/><br/>
+        <form action="" method="POST">
+            {%  csrf_token %}
+            <!-- <div class="col mx-5 my-5" > -->
+                <div class="card card-body" id="event">
+                    <p class="display-4" style="font-size: 39px;text-shadow: 2px 2px #1a1919;font-style: normal; padding-left: 50px; margin-bottom: 0px;">Enter event details</p>     <br/>   
+                    <!-- <p style="font-size: 14px;"><span style="font-weight: 600px; padding-left: 30px;">NOTE: </span>{{check_msg}}</p> -->
+                    <h4>Tag :</h4>{{form.tag}}
+                    <br>
+                    {% if  request.user.is_active and not request.user.is_staff and  not request.user.is_superuser%}
+                    <input type="hidden" id="event98" name='organizer' value={{request.user.id}}>
+                    <script>
+                        window.onload = function() {
+                        var localVariable = document.getElementById('event98').value;
+                        document.getElementById('event98').value = localVariable-3;
+                        };
+                    </script>
+                    {% else %}
+                    <h4>Organizer  :</h4>{{form.organizer}}
+                    {% endif %}
+                    <br>
+                    <h4>Event data(yyyy-mm-dd) :</h4>{{form.event_date_time}}
+                     <strong style="color: brown;">{{ date_msg }}</strong>
+                     <strong style="color: brown;">{{ form.event_date_time.errors }}</strong>
+                    <h4>Event purpose :</h4>{{form.event_purpose}}
+                    <br><br>
+                    <button class="btn btn-primary btn-large" type="submit" style="width: 120px;height: 50px;font-size: larger;">Submit</button> 
+
+                </div>
+            <!-- </div> -->
+            
+        </form>
+    </body>
+</html>
+
+{% endblock %} 

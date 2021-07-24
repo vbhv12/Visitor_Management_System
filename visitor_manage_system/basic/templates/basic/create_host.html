@@ -1,0 +1,88 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+<html>
+    <head>
+        <title>Create Host</title>
+        <style>
+        form{
+            width: 45%;
+            margin:auto;
+        }
+        input{
+            width: 400px;
+        }
+        span{
+            font-size: 13px;
+            font-style: italic;
+        }
+        #frm{
+            background-color: rgb(95, 95, 99);
+            color: white;
+            border-radius: 18px;
+            padding-left: 140px;
+        }
+        </style>
+    </head>
+    <body style="background-color: darkgray;">
+        <form action="" method="POST" enctype='multipart/form-data'>
+            {%  csrf_token %}
+            <div class="col mx-5 my-5" id="frm">
+                <p class="display-4" style="font-size: 45px;text-shadow: 2px 2px #1a1919; padding-left: 35px;">Enter host details</p>        
+                <h4>{{error}}</h4>
+                <h4>Username :</h4>{{form1.username}}
+                <br><br>
+                <strong>{{ form1.username.errors }}</strong>
+                <h4>Email Address :</h4>{{form1.email}}
+                <br>
+                <span>-{{email_check_msg}}</span>
+                  <strong>{{ form1.email.errors }}</strong>
+                <h4>Name :</h4>{{form.name}}
+                <br><br>
+                <h4>Phone number  :</h4>{{form.Phone_no}}
+                <br>
+                <span>-{{phone_no_msg}}</span>
+                {% if form.Phone_no.errors %}
+                <ul>
+                {% for error in form.Phone_no.errors %}
+                <li><strong>{{ error }}</strong></li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <h4>Age :</h4>{{form.age}}
+                <br>
+                <span>-{{age_msg}}</span>
+                <strong> {{ form.age.errors }}</strong>
+                <h4>Gender:</h4>{{form.gender}}
+                <br><br>
+                <h4>flat number :</h4>{{form.flat_no}}
+                <br><br>
+                <strong> {{ form.flat_no.errors }}</strong>
+            <!--     {% if form.flat_no.errors %}
+                  <strong></strong>
+                 {% endif %} -->
+                <h4>Number of people  :</h4>{{form.no_of_people}}
+                <br>
+                <span>-{{no_of_people_msg}}</span>
+                {% if form.no_of_people.errors %}
+                  <strong>{{ form.no_of_people.errors }}</strong>
+                 {% endif %}
+                <h4>Password :</h4>{{form1.password1}}
+                <br>
+                <span>-{{message1}}</span><br>
+                <span>-{{message2}}</span><br>
+                <span>-{{message3}}</span>
+                <h4>Confirm Password :</h4>{{form1.password2}}
+                <br><br>
+                        <!-- {{form.as_p}} -->
+                        <input class="btn btn-primary btn-lg " type="submit" name="Submit" style="width: auto;"> 
+                    <br><br>
+            </div>
+        
+        </form>
+    </body>
+</html>
+
+{% endblock %}

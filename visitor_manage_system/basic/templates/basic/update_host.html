@@ -1,0 +1,61 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+<html>
+    <head>
+        <title>Update Host</title>
+        <style>
+            form{
+                width: 45%;
+                margin:auto;
+            }
+            input{
+                width: 350px;
+            }
+            p{
+                font-size: 13px;
+                font-style: italic;
+            }
+            #frm{
+            background-color: rgb(95, 95, 99);
+            color: white;
+            border-radius: 18px;
+            padding-left: 165px;
+        }
+        </style>
+    </head>
+    <body style="background-color: darkgray;">
+        <form action="" method="POST" enctype='multipart/form-data'>
+            {%  csrf_token %}
+                    <div class="col mx-5 my-5" id="frm">
+                        <p class="display-4" style="font-size: 45px;text-shadow: 2px 2px #1a1919;font-style: normal; padding-left: 30px;">Edit host details</p>        
+
+                        <h4>{{error}}</h4>
+                        <h4>Name :</h4>{{form.name}}
+                        <br><br>
+                        <h4>Phone_no  :</h4>{{form.Phone_no}}
+                        <br>
+                        <p>-{{phone_no_msg}}</p>
+                        <h4>Age:</h4>{{form.age}}
+                        <br>
+                        <p>-{{age_msg}}</p>
+                        <h4>Gender:</h4>{{form.gender}}
+                        <br><br>
+                        <h4>flat_no :</h4>{{form.flat_no}}
+                        <br><br>
+                        <h4>no_of_people  :</h4>{{form.no_of_people}}
+                        <br>
+                        <p>-{{no_of_people_msg}}</p>
+                       
+                        <!-- {{form.as_p}} -->
+        
+                        <button class=" btn btn-primary btn-lg" type="submit" name="Submit">Submit</button>
+                        <br><br>
+                    </div>
+                            
+        </form>
+    </body>
+</html>
+
+{% endblock %}

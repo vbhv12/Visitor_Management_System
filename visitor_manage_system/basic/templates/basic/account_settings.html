@@ -1,0 +1,57 @@
+ 
+{% extends 'basic/dashboard.html' %}
+{% load static %}
+{% block content %}
+<html>
+	<head>
+<style>
+	.profile-pic{
+		max-width: 250px;
+		max-height:250px;
+		margin: 10px;
+		border-radius: 80%;
+	}
+</style>
+</head>
+<body style="background-color:gray ;">
+<br>
+<!-- <div class="container">{% for message in messages %}
+	{{message}}
+  {% endfor %}
+</div> -->
+<div class="row">
+	<div class="col-md-3">
+		<div class="card card-body">
+			<a class="btn btn-warning" href="{% url 'userpage' %}"> &#8592; Back to home</a>
+			<hr>
+			<h3 style="text-align: center">Account Settings</h3>
+			<hr>
+			<img class="profile-pic" src="{{request.user.host.host_image.url}}" >
+		
+		</div>
+	</div>
+	<div class="col-md-9" >
+		<div class="card card-body" style="margin-right: auto;padding: auto;margin-right: 10px;">
+			
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+
+                  <h5>Name         : {{form.name}}</h5><br/>
+                 <h5>Phone Number  : {{form.Phone_no}}</h5><br/>
+                 <h5>Age           : {{form.age}}</h5><br/>
+                 <h5>Gennder       : {{form.gender}}</h5><br/> 
+				 <h5>No of People  : {{form.no_of_people}} </h5><br/>
+				 <h5>Host Image    : {{form.host_image}}</h5><br/>
+				 
+				<!-- {{form.as_p}}-->
+			<input class="btn btn-primary" type="submit" name="Update Information">
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+{% endblock %}

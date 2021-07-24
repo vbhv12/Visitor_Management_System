@@ -1,0 +1,33 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+<html>
+    <head>
+        <title>Event Visitor</title>
+        <style>
+            #event{
+                padding: 30px 90px;
+                background-color: rgb(95, 95, 99);
+                color: white;
+                border-radius: 18px;
+            }
+        </style>
+    </head>
+    <body style="background-color: darkgray;">
+        <form action="" method="POST">
+            {%  csrf_token %}
+            <div class="container" style="width: 50%; margin-top: 70px;">
+                <div class="card card-body" id="event">
+                <h4>Event Orgainzed by :</h4>{{form.event_info}}
+                <br>
+                <h4>Visitor info :</h4>{{form.event_visitor_info}}
+                <br><br>
+                <input class="btn btn-primary btn-lg" type="submit" name="Submit" style="width: 130px;"> 
+            </div>
+        </div>
+        </form>
+    </body>
+</html>
+
+{% endblock %}

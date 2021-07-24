@@ -1,0 +1,75 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+    
+<!-- {% load static %} -->
+<!Doctype html>
+<html>
+    <head>
+         <title>Create visitor</title>
+         <style>
+            h5{
+                text-align: center;
+            }
+            #visitor{
+                padding: 30px 100px;
+                background-color: rgb(95, 95, 99);
+                color: white;
+                border-radius: 18px;
+            }
+         </style>
+    </head>   
+    <body style="background-color: darkgray;">
+        <div class="row mx-5 my-5">
+            <div class="col-md mx-3">
+                <div class="card card-body" style="width: 400px;margin: auto;margin-right: 50px; border: 1px solid black">
+                    <h5>Add new visitor here</h5>
+                    <hr>
+                    <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'createvisitor' %}" style="margin-top: 14px; font-weight: 700 ; height: 35px;color:white;background-color:rgba(0, 0, 255, 0.692) ;">New visitor</a>
+            
+                    <div>
+                        <h6></h6>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md">
+                <div class="card card-body" style="width: 400px; margin: auto; margin-left: 50px; border: 1px solid black">
+                    <h5>Number of visitors today : </h5>
+                    <hr>
+                    <h4 style="text-align: center;padding: 10px">{{count}}</h4>
+                   
+                </div>
+            </div> 
+        </div>
+     
+            <form action="" method="POST">
+                <div class="container" style="width: 45%; margin-bottom: 50px;" >
+                    <div class="card card-body" id="visitor">
+                        {%  csrf_token %}
+                            <!-- {{form}} -->
+                            <h4>Duration :</h4>{{form.duration}}
+                            <br>
+                            <h4>Purpose :</h4>{{form.purpose}}
+                            <br>
+                            <h4>Visitor Details :</h4>{{form.visit_detail}}
+                            <br>
+                            <h4>Flat No :</h4>{{form.flat_no}}
+                            <br>
+                            <button class="btn btn-primary btn-lg" type="submit" name="Submit" style="width: 135px;">Submit</button> 
+                    </div>
+                </div>
+            </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

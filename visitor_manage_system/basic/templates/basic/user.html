@@ -1,0 +1,89 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+<html>
+    <head>
+        <title>Events</title>
+        <style>
+        .display-5{
+            text-align: center;
+            font-style: italic;
+        }
+        tr{
+            text-align: center;
+        }
+        .btn-sm{
+            width: 70px;
+            margin-left: 8px;
+        }
+        #asdf{
+            width: 50%;
+            height: 150px;
+            margin: auto;
+            background-size: 500px 200px;
+        }
+        h5{
+            text-align: center;
+        }
+        th,td,table{
+                border:1px solid #000000;
+            }
+        
+        </style>
+    </head>
+    <body style="background-color: darkgray;">
+        <div class="row mx-5 my-5">
+            <div class="col-md mx-3">
+                <div class="card card-body" id="asdf" style="border: 1px solid black">
+                    <h5>CREATE NEW EVENT HERE!🎉</h5>
+                    <hr>
+                    <a class="btn btn-info  btn-sm btn-block" href="{% url 'createevent' %}" style="width: 50%; margin: auto; font-weight: 700;background-color:rgba(0, 0, 255, 0.692);color: white;">Create Event</a>
+            
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-md mx-5 my-5">
+                <div class="card card-body" style="border:2px solid black;margin: 0px 50px">
+                    <table class="table">
+                        <h3 class="display-5">Event Details</h3>
+                        <tr style="background-color:#43484d; color: white;">
+                            <th>EVENT ID</th>
+                            <th>TAG</th>
+                            <th>EVENT DATE & TIME</th>
+                            <th>EVENT PURPOSE</th>
+                            <th>EDIT DETAILS</th> 
+                            <th>ANALYSIS</th>
+                            
+                        </tr>
+                       
+                        {% for i in form  %}
+                         <tr>
+                            <th>{{i.event_id}}</th>
+                            <th>{{i.tag}}</th>
+                            <th>{{i.event_date_time}}</th>
+                            <th>{{i.event_purpose}}</th>
+                            <th>
+                                <a class="btn btn-sm btn-info" href="{% url  'updateevent' i.event_id  %}">Update</a> 
+                                <a class="btn btn-sm btn-danger" href="{% url  'deleteevent' i.event_id  %}">Delete</a>
+                            </th>
+                            <th> <a class="btn btn-sm btn-light" href="{% url  'analysispage' i.event_id  %}">View</a>     </th>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </body>
+</html>
+
+
+
+{% endblock %} 

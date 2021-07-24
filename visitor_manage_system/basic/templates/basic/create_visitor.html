@@ -1,0 +1,55 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+<!Doctype html>
+<html>
+    <head>
+        <title>Create visitor</title>
+        <style>
+        form{
+            width: 45%;
+            margin-left: 390px;
+        }
+        
+        input{
+            width: 400px;
+        }
+        #visitor{
+            background-color: rgb(95, 95, 99);
+            color: white;
+            border-radius: 18px;
+            padding-left: 130px;
+        }
+        </style>
+</head>
+<body style="background-color: darkgray;">
+
+    <form action="" method="POST" enctype='multipart/form-data'>
+         {%  csrf_token %}
+        <div class="container">
+            <div class="card-body  col mx-5 my-5" id="visitor">
+                <p class="display-4" style="font-size: 45px;text-shadow: 2px 2px #1a1919;font-style:normal; padding-left: 30px;">Enter visitor details</p>
+                <h4>Name :<br></h4>{{form.name}}
+                <br><br>
+                <h4>Phone No :</h4>{{form.Phone_no}}
+                <br><br>
+                <h4>Age :</h4>{{form.age}}
+                <br><br> 
+                <h4>Gender :</h4>{{form.gender}}
+                <br><br>
+                <h4>Email ID :</h4>{{form.email_id}}
+                <br><br>
+                <h7>Visitor image :{{form.visitor_image}}</h7>
+                <br><br>
+                <h7>ID proof :{{form.id_proof}}</h7>
+                <br><br>
+                <!--{{form.as_p}}-->
+                <input class="btn btn-primary btn-lg" type="submit" name="Submit" style="width: 135px;"> 
+            </div>
+        </div>
+        
+</form>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+ 
+{% extends 'basic/dashboard.html' %}
+{% load static %}
+{% block content %}
+
+<html>
+    <head>
+        <style>
+            .jumbotron{
+                width:50%; 
+                height: 180px;
+                border: 1px solid black;
+                margin:50px auto;
+                
+            }
+            tr{
+                text-align: center;
+            }
+            th,td,table{
+                border:1px solid #000000;
+            }
+            span{
+                font-size: 35px;
+                color: rgb(168, 166, 166);
+                text-shadow: 1.3px 1.3px #0e0d0d;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron" style="padding-left: 205px; padding-top: 40px;">
+    
+            <h4>Event : <span style="padding-left: 53px;">{{event.event_purpose}}</span></h4>
+            <h4>Event date : <span>{{event.event_date_time}}</span></h4>
+        </div>
+        
+        
+                
+        <div class="row">
+            <div class="col-md mx-5 my-5">
+                <div class="card card-body"  style="border:2px solid black;margin-left: 30px;margin-right: 30px;">
+                    <table class="table">
+                        <h3 style="text-align: center; font-style: italic;">People who visited the event</h3>
+                        <tr style="background-color:#43484d; color: white;">
+                            <th>NAME</th>
+                            <th>PHONE N0.</th>
+                            <th>AGE</th>
+                            <th>GENDER</th>
+                            <th>EMAIL ID</th>
+                            <th>VISITOR IMAGE</th>
+                        </tr>
+                       
+                        {% for i in people  %}
+                         <tr>
+                            <th>{{i.event_visitor_info.name}}</th>
+                            <th>{{i.event_visitor_info.Phone_no}}</th>
+                            <th>{{i.event_visitor_info.age}}</th>
+                            <th>{{i.event_visitor_info.gender}}</th>
+                            <th>{{i.event_visitor_info.email_id}}</th>
+                            <!-- <th>{{i.event_visitor_info.visitor_image}}</th> -->
+                            <th><img class="profile-pic" src="/static/images/{{i.event_visitor_info.visitor_image}}" width="80px" height="50px"></th>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </body>
+</html>
+ 
+
+{% endblock %}

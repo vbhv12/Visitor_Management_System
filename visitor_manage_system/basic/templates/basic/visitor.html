@@ -1,0 +1,68 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+    
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .display-5{
+                text-align: center;
+                font-style: italic;
+            }
+            tr{
+                text-align: center;
+            }
+        table,th,td{
+            border:1px solid #000000;
+        }
+    </style>
+</head>
+<body style="background-color: darkgray;">
+
+        <br/>
+        <div class="card card-body" style="margin: auto;width: 40%;border: 1px solid black" >
+			<h5 style="text-align: center;">Add new visitor here</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'createvisitor' %}" style="width: 60%; height: 35px; margin: auto; font-weight: 700 ;background-color:rgba(0, 0, 255, 0.692);color: white;">Create visitor</a>
+			<!--  -->
+			
+	
+	</div>
+
+<br>
+
+        <div class="card card-body" style="border:2px solid black;margin: 0px 150px;">
+            <table class="table">
+                <h3 class="display-5">Host Details</h3>
+                <tr style="background-color:#43484d; color: white;">
+                    <th style="border-top: 1px solid black;" >NAME</th>
+                    <th style="border-top: 1px solid black;">PHONE NO.</th>
+                    <th style="border-top: 1px solid black;">EMAIL ID</th>
+                    <th style="border-top: 1px solid black;">EDIT DETAILS</th>
+                </tr>
+                {%  for i in visitor %}
+                <tr>
+                    <th><b>{{i.name}}</b></th>
+                    <th>{{i.Phone_no}}</th>
+                    <th>{{i.email_id}}</th>
+                    <th>
+                        <a class="btn btn-sm btn-info" href="{% url 'updatevisitor' i.visitor_id %}" style="width: 70px;">Update</a>
+                        <a class="btn btn-sm btn-danger" href="{%  url 'deletevisitor' i.visitor_id %}" style="width: 70px; margin-left: 8px;">Delete</a>
+                    </th>
+                
+                </tr>
+                {%  endfor  %}
+            </table>
+        </div>
+  
+
+</body>
+</html> 
+
+{% endblock %}
